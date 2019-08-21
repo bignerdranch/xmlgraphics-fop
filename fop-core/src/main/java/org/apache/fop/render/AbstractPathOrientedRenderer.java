@@ -881,7 +881,7 @@ public abstract class AbstractPathOrientedRenderer extends PrintRenderer {
             endTextObject();
             float descender = fm.getDescender(fontsize) / 1000f;
             float capHeight = fm.getCapHeight(fontsize) / 1000f;
-            float halfLineWidth = (descender / -8f) / 2f;
+            float halfLineWidth = fm.getStrikeoutThickness(fontsize) / 1000f / 2f;
             float endx = (startx + inline.getIPD()) / 1000f;
             if (inline.hasUnderline()) {
                 Color ct = (Color) inline.getTrait(Trait.UNDERLINE_COLOR);
@@ -899,7 +899,7 @@ public abstract class AbstractPathOrientedRenderer extends PrintRenderer {
             }
             if (inline.hasLineThrough()) {
                 Color ct = (Color) inline.getTrait(Trait.LINETHROUGH_COLOR);
-                float y = (float)(baseline - (0.45 * capHeight));
+                float y = (float)(baseline - (0.4 * capHeight));
                 drawBorderLine(startx / 1000f, (y - halfLineWidth) / 1000f,
                         endx, (y + halfLineWidth) / 1000f,
                         true, true, Constants.EN_SOLID, ct);
